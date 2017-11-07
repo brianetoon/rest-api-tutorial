@@ -17,6 +17,8 @@ const NinjaSchema = new Schema({
 	// add in geo location
 });
 
-const Ninja = mongoose.model('ninja', NinjaSchema);
+// create ninja collection
+const Ninja = mongoose.model('ninja', NinjaSchema); 
+// mongoose automatically pluralizes 'ninja' to the 'ninjas' collection
 
 module.exports = Ninja;
