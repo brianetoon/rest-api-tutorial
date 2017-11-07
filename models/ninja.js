@@ -1,7 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// create ninja Schema & model
+// create geolocation Schema
+const GeoSchema = new Schema({
+	type: {
+		type: String,
+		default: "Point"
+	},
+	coordinates: {
+		type: [Number],
+		index: "2dsphere"
+	}
+});
+
+// create ninja Schema
 const NinjaSchema = new Schema({
 	name: {
 		type: String,
@@ -13,11 +25,11 @@ const NinjaSchema = new Schema({
 	available: {
 		type: Boolean,
 		default: false
-	}
-	// add in geo location
+	},
+	geometry: GeoSchema
 });
 
-// create ninja collection
+// create ninja collection or model
 const Ninja = mongoose.model('ninja', NinjaSchema); 
 // mongoose automatically pluralizes 'ninja' to the 'ninjas' collection
 
