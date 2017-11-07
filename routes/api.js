@@ -16,7 +16,12 @@ router.post('/ninjas', function(req, res, next){
 
 // update a ninja in the db
 router.put('/ninjas/:id', function(req, res, next){
-	res.send({type: 'PUT'});
+	Ninja.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
+		// findOne to return the UPDATED ninja
+		Ninja.findOne({_id: req.params.id}).then(function(ninja){
+			res.send(ninja);
+		});
+	}).catch(next);
 });
 
 // delete a ninja from the db
