@@ -10,11 +10,14 @@ const app = express();
 mongoose.connect('mongodb://localhost/ninjago', {useMongoClient: true});
 mongoose.Promise = global.Promise;
 
+app.use(express.static('public'));
+
 // body-parser middleware
 app.use(bodyParser.json());
 
 // initialize routes
 app.use('/api', routes);
+
 
 // custom error handling middleware
 app.use(function(err, req, res, next){

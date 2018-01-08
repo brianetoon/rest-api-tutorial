@@ -4,6 +4,7 @@ const Ninja = require('../models/ninja');
 
 // get a list of ninjas from the database
 router.get('/ninjas', function(req, res, next){
+	
 	/* GET A LIST OF ALL THE NINJAS:
 	Ninja.find({}).then(function(ninjas){
 		res.send(ninjas);
